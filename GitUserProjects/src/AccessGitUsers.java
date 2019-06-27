@@ -53,10 +53,12 @@ public class AccessGitUsers {
 		String gitlab_api_user_project = "https://gitlab.com/api/v4/users/";
 
 		StringBuilder userIdApi = new StringBuilder(gitlab_api_user);
-		gitlab_api_user = userIdApi.append(userId).toString();
-		gitlab_api_user_project = userIdApi.append(userId).toString();
 		StringBuilder userProjectApi = new StringBuilder(gitlab_api_user_project);
-	    gitlab_api_user_project = userProjectApi.append("/projects").toString();
+	    gitlab_api_user_project = userProjectApi.append(userId).append("/projects").toString();
+
+		gitlab_api_user = userIdApi.append(userId).toString();
+		//gitlab_api_user_project = userIdApi.append(userId).toString();
+	   // System.out.println("gitlab_api_user_project="+gitlab_api_user_project);
 		BufferedReader br = null;
 		StringBuffer response = null;
 		HttpURLConnection connection=null;
@@ -83,7 +85,7 @@ public class AccessGitUsers {
 			}
 			br.close();
 
-			System.out.println("User data on gitlab=" + response);
+			System.out.println("GitLab user info=" + response);
 
 		}
 		
@@ -96,8 +98,10 @@ public class AccessGitUsers {
 		else {
 			
 			 url = new URL(gitlab_api_user_project);
-			//	System.out.println(url);
+				//System.out.println(url);
 			    connection = (HttpURLConnection) url.openConnection();
+			    
+			 // private token  "3ZmMMtMvGEPYc8qTm_36"
 							//connection.setRequestProperty("accept", "application/vnd.github.inertia-preview+json");
 				responseCode = connection.getResponseCode();
 			//System.out.println(responseCode);
@@ -114,12 +118,12 @@ public class AccessGitUsers {
 				}
 				br.close();
 
-				System.out.println("UserProject data on gitlab=" + response);
+				System.out.println("GitLab user project info=" + response);
 
 			}
 			
 			else {
-				System.out.println("Sorry Userid not found on gitlab");
+				System.out.println("Sorry User Projects not found on gitlab");
 			
 			}
 		
@@ -160,7 +164,7 @@ public class AccessGitUsers {
 				}
 				br.close();
 
-				System.out.println("User Data on github=" + response);
+				System.out.println("Github user info=" + response);
 				gitlabConnection(action,userId);
 
 			}
@@ -201,7 +205,7 @@ public class AccessGitUsers {
 			}
 			else {
 				
-				System.out.println("Sorry Userid not found on github");
+				System.out.println("Sorry User projects not found on github");
 				System.out.println("looking on gitlab");
 				gitlabConnection(action,userId);
 
