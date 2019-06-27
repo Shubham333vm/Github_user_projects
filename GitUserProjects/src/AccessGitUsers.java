@@ -25,11 +25,11 @@ public class AccessGitUsers {
 		
 		 if(action ==1) {
 		
-		 GitConnection(action,userId);
+		 githubConnection(action,userId);
 		
 		 }
 		 else if(action==2) {
-		 GitConnection(action,userId);
+		 githubConnection(action,userId);
 		
 		 }
 		 else {
@@ -66,12 +66,13 @@ public class AccessGitUsers {
 		//Shubham333vm/projects
 		
 		if(action==1) {
-		  url = new URL(gitlab_api_user);
-			//System.out.println(url);
-		    connection = (HttpURLConnection) url.openConnection();
-						//connection.setRequestProperty("accept", "application/vnd.github.inertia-preview+json");
-			responseCode = connection.getResponseCode();
-		   //System.out.println(responseCode);
+		 
+			url = new URL(gitlab_api_user);
+                       //System.out.println(url);
+		        connection = (HttpURLConnection) url.openConnection();
+		        //connection.setRequestProperty("accept", "application/vnd.github.inertia-preview+json");
+		         responseCode = connection.getResponseCode();
+		        //System.out.println(responseCode);
 		
 
 		if (responseCode == 200) {
@@ -97,14 +98,13 @@ public class AccessGitUsers {
 		
 		else {
 			
-			 url = new URL(gitlab_api_user_project);
-				//System.out.println(url);
+			    url = new URL(gitlab_api_user_project);
+			    //System.out.println(url);
 			    connection = (HttpURLConnection) url.openConnection();
-			    
-			 // private token  "3ZmMMtMvGEPYc8qTm_36"
-							//connection.setRequestProperty("accept", "application/vnd.github.inertia-preview+json");
-				responseCode = connection.getResponseCode();
-			//System.out.println(responseCode);
+			    // private token  "3ZmMMtMvGEPYc8qTm_36"
+			    //connection.setRequestProperty("accept", "application/vnd.github.inertia-preview+json");
+			     responseCode = connection.getResponseCode();
+			    //System.out.println(responseCode);
 			
 
 			if (responseCode == 200) {
@@ -133,7 +133,7 @@ public class AccessGitUsers {
 		
 	}
 
-	private static void GitConnection(int action, String userId) throws IOException {
+	private static void githubConnection(int action, String userId) throws IOException {
 
 		String readLine = null;
 		int responseCode = 0;
